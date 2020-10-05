@@ -7,10 +7,10 @@ function signTxWan(nonce, data, prvKey, to, chainId) {
     nonce: nonce,
     gasPrice: '0x2a600b9c00',
     gas: '0x0f4240',
-    to: '0xB1F51B47Af26cE24d3596F4231CcFC848b8bfe43',
+    to,
     value: '0x00',
     data: data,
-    chainId: 3,
+    chainId: chainId,
   };
 
   const privateKey = Buffer.from(prvKey, 'hex');
@@ -34,7 +34,7 @@ async function updateWanBridge(network, evmConfig) {
     nonce,
     encodedData,
     evmConfig.wallet.WALLET_PRIVATE_KEY,
-    network.bridgeAddress,
+    network.stdReferenceBasicAddress,
     3
   );
   const receipt = await web3.eth.sendSignedTransaction(rawTx);

@@ -1,4 +1,3 @@
-const Web3 = require('web3');
 const wan = require('./wan');
 const evmConfig = require('./config.evm.json');
 
@@ -6,9 +5,7 @@ async function start() {
   let network = {
     name: 'Wanchain Testnet',
     rpc: 'https://gwan-ssl.wandevs.org:46891',
-    bridgeAddress: '0x97917858f167a166b2004d6f5c10268d447e9f43',
-    gasPrice: 20,
-    type: 'WAN',
+    stdReferenceBasicAddress: '0xB1F51B47Af26cE24d3596F4231CcFC848b8bfe43',
   };
   let response = await wan.updateWanBridge(network, evmConfig);
   console.log(response);
